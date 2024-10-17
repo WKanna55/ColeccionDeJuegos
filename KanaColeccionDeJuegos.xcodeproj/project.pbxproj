@@ -14,6 +14,7 @@
 		6655F27C2CADF6A900AAF1F5 /* KanaColeccionDeJuegos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6655F27A2CADF6A900AAF1F5 /* KanaColeccionDeJuegos.xcdatamodeld */; };
 		6655F27E2CADF6AB00AAF1F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6655F27D2CADF6AB00AAF1F5 /* Assets.xcassets */; };
 		6655F2812CADF6AB00AAF1F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6655F27F2CADF6AB00AAF1F5 /* LaunchScreen.storyboard */; };
+		6661C9882CAE0154004BA20E /* JuegosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6661C9872CAE0154004BA20E /* JuegosViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		6655F27D2CADF6AB00AAF1F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6655F2802CADF6AB00AAF1F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6655F2822CADF6AB00AAF1F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6661C9872CAE0154004BA20E /* JuegosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuegosViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				6655F27F2CADF6AB00AAF1F5 /* LaunchScreen.storyboard */,
 				6655F2822CADF6AB00AAF1F5 /* Info.plist */,
 				6655F27A2CADF6A900AAF1F5 /* KanaColeccionDeJuegos.xcdatamodeld */,
+				6661C9872CAE0154004BA20E /* JuegosViewController.swift */,
 			);
 			path = KanaColeccionDeJuegos;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6661C9882CAE0154004BA20E /* JuegosViewController.swift in Sources */,
 				6655F2762CADF6A900AAF1F5 /* ViewController.swift in Sources */,
 				6655F2722CADF6A900AAF1F5 /* AppDelegate.swift in Sources */,
 				6655F27C2CADF6A900AAF1F5 /* KanaColeccionDeJuegos.xcdatamodeld in Sources */,
