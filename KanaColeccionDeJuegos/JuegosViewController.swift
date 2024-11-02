@@ -7,16 +7,20 @@
 
 import UIKit
 
-class JuegosViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class JuegosViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tituloTextField: UITextField!
     @IBOutlet weak var agregarActualizarBoton: UIButton!
-    @IBOutlet weak var eliminarBoton: UIButton!
+    @IBOutlet weak var categoriaPicker: UIPickerView!
+    
     
         
     var imagePicker = UIImagePickerController()
     var juego:Juego? = nil
+    
+    let categorias = ["RPG", "MOBA", "MMO", "Multiplayer"]
+    var categoriaSeleccionada: String?
     
     @IBAction func fotosTapped(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
@@ -30,6 +34,7 @@ class JuegosViewController: UIViewController, UIImagePickerControllerDelegate, U
         if juego != nil {
             juego!.titulo! = tituloTextField.text!
             juego!.imagen = imageView.image?.jpegData(compressionQuality: 0.50)
+            juego!.categoria = categoriaSeleccionada
         } else {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             let juego = Juego(context: context)
@@ -40,15 +45,6 @@ class JuegosViewController: UIViewController, UIImagePickerControllerDelegate, U
         navigationController?.popViewController(animated: true)
     }
     
-    
-    @IBAction func eliminarTapped(_ sender: Any) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        context.delete(juego!)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        navigationController?.popViewController(animated: true)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
@@ -57,9 +53,10 @@ class JuegosViewController: UIViewController, UIImagePickerControllerDelegate, U
             imageView.image = UIImage(data: (juego!.imagen!) as Data)
             tituloTextField.text = juego!.titulo
             agregarActualizarBoton.setTitle("Actualizar", for: .normal)
-        } else {
-            eliminarBoton.isHidden = true
         }
+        
+        categoriaPicker.delegate = self
+        categoriaPicker.dataSource = self
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey:Any]){
@@ -68,4 +65,22 @@ class JuegosViewController: UIViewController, UIImagePickerControllerDelegate, U
         imagePicker.dismiss(animated: true, completion: nil)
     }
 
+    
+    // categorias tarea - pickercategorias
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categorias[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categorias.count
+    }
+    
+    // Lógica cuando el usuario selecciona una fila (categoría)
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        categoriaSeleccionada = categorias[row]
+    }
 }
