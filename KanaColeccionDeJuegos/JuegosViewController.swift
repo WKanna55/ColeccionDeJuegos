@@ -20,7 +20,7 @@ class JuegosViewController: UIViewController, UIImagePickerControllerDelegate, U
     var juego:Juego? = nil
     
     let categorias = ["RPG", "MOBA", "MMO", "Multiplayer"]
-    var categoriaSeleccionada: String?
+    var categoriaSeleccionada: String? = "RPG"
     
     @IBAction func fotosTapped(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
